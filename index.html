@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Calculadora de Barita</h2>
+
+Bbl iniciales:<br>
+<input type="number" id="bbl" value="214"><br><br>
+
+Densidad inicial (ppg):<br>
+<input type="number" id="wi" value="15.4"><br><br>
+
+Densidad final (ppg):<br>
+<input type="number" id="wf" value="20"><br><br>
+
+<button onclick="calcular()">Calcular</button>
+
+<p id="resultado"></p>
+
+<script>
+function calcular(){
+ let bbl = Number(document.getElementById("bbl").value);
+ let wi = Number(document.getElementById("wi").value);
+ let wf = Number(document.getElementById("wf").value);
+
+ let lbPorBbl = (1470 * (wf - wi)) / (35 - wf);
+ let lbTotales = lbPorBbl * bbl;
+ let tn = lbTotales / 2204.6;
+ let incBbl = lbTotales / 1470;
+ let volFinal = bbl + incBbl;
+
+ document.getElementById("resultado").innerHTML =
+ "Barita: " + tn.toFixed(2) + " tn<br>" +
+ "Incremento: " + incBbl.toFixed(1) + " bbl<br>" +
+ "Volumen final: " + volFinal.toFixed(1) + " bbl";
+}
+</script>
+
+</body>
+</html>
